@@ -1,24 +1,19 @@
-# README
+# Quark Clicker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sample Rails 5 ActionCable application.
 
-Things you may want to cover:
+# Install
 
-* Ruby version
+Download the source code.
 
-* System dependencies
+Install gem dependencies.
 
-* Configuration
+```
+$ bundle install
+```
 
-* Database creation
+Run the server.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ rails s
+```
