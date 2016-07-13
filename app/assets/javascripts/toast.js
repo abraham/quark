@@ -15,7 +15,7 @@
       return document.querySelector('#snackbar');
     },
     render: (toast) => {
-      App.toast.element().MaterialSnackbar.showSnackbar({ message: toast.message });
+      App.toast.element().MaterialSnackbar.showSnackbar(toast);
     },
     ready: () => {
       App.toast._upgraded = true;
