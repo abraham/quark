@@ -15,5 +15,5 @@ $ bundle install
 Run the server.
 
 ```
-$ rails s
+$ rails server
 ```
