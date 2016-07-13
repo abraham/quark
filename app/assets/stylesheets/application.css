@@ -34,7 +34,3 @@ body {
 .card-wide > .mdl-card__title {
   margin: auto;
 }
-
-.card-wide > .mdl-card__menu {
-  color: #fff;
-}
