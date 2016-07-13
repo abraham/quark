@@ -21,7 +21,7 @@
       }
     },
     currentVersion: () => {
-      return $('meta[property=version]').attr('content');
+      return $('meta[name=version]').attr('content');
     }
   });
 }).call(this);
