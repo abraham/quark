@@ -22,12 +22,8 @@ body {
   padding: 0 40px 0 40px;
 }
 
-.page-content {
-  padding-top: 64px;
-}
-
-.content-grid {
-  max-width: 960px;
+.mdl-card {
+  margin: 24px;
 }
 
 .card-wide.mdl-card {
