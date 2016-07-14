@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in @user
-      flash[:notice] = 'You are now signed in'
+      flash[:notice] = "Get counting #{@user.name}!"
       redirect_to root_url
     else
       @user.errors.full_messages.each do |message|
