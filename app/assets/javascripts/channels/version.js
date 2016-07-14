@@ -4,7 +4,7 @@
   App.versionChannel = App.cable.subscriptions.create({ channel: 'VersionChannel' }, {
     received: function(data) {
       console.log('App.versionChannel.received', data);
-      this.compareVersion(data.sha1);
+      this.compareVersion(data.version);
     },
     connected: function() {
       console.log('App.versionChannel.connected');

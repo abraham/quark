@@ -4,6 +4,6 @@ class VersionChannel < ApplicationCable::Channel
   end
 
   def get
-    VersionChannel.broadcast_to(self, sha1: current_app_version)
+    VersionChannel.broadcast_to(self, version: current_app_version)
   end
 end
