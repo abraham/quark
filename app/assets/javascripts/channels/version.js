@@ -2,16 +2,16 @@
   this.App || (this.App = {});
 
   App.versionChannel = App.cable.subscriptions.create({ channel: 'VersionChannel' }, {
-    received: (data) => {
+    received: function(data) {
       console.log('App.versionChannel.received', data);
-      App.versionChannel.compareVersion(data.sha1);
+      this.compareVersion(data.sha1);
     },
-    connected: () => {
+    connected: function() {
       console.log('App.versionChannel.connected');
-      App.versionChannel.send({ action: 'get' });
+      this.perform('get');
     },
-    compareVersion: (version) => {
-      if (App.versionChannel.currentVersion() !== version) {
+    compareVersion: function(version) {
+      if (this.currentVersion() !== version) {
         App.toast.render({
           message: 'There is a new app version available',
           timeout: 60 * 1000,
@@ -20,7 +20,7 @@
         });
       }
     },
-    currentVersion: () => {
+    currentVersion: function() {
       return $('meta[name=version]').attr('content');
     }
   });

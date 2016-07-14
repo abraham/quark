@@ -3,7 +3,7 @@ class QuarkChannel < ApplicationCable::Channel
     stream_from "quark:quark_#{params[:scope]}"
   end
 
-  def receive(data)
+  def create(data)
     return unless current_user
 
     quark = Quark.new(count: data.count, user: current_user)

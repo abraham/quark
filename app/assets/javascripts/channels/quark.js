@@ -2,18 +2,19 @@
   this.App || (this.App = {});
 
   App.quarkChannel = App.cable.subscriptions.create({ channel: "QuarkChannel", scope: 'global' }, {
-    received: (data) => {
+    received: function(data) {
       console.log('App.quarkChannel.received', data);
       if (data.status === 'ok') {
         App.counter.add(data.quark.count);
       }
     },
-    connected: () => {
+    connected: function() {
       console.log('App.quarkChannel.connected');
       App.counter.ready();
     },
-    count: (count) => {
-      App.quarkChannel.send({ count: count });
+    count: function(count) {
+      console.log(count);
+      this.perform('create', { count: count });
     }
   });
 }).call(this);
