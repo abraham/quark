@@ -6,21 +6,18 @@
   const COUNTER_ID = 'counter';
 
   App.counter = {
-    onQuark: (quark) => {
-      console.log('onQuark', quark);
-    },
-    onSubmit: (event) => {
+    onSubmit: function(event)  {
       App.quarkChannel.count(1);
       return false;
     },
-    ready: () => {
-      $('form.counter').on('submit', App.counter.onSubmit);
+    ready: function() {
+      $('form.counter').on('submit', this.onSubmit);
     },
-    add: (increase) => {
+    add: function(increase) {
       let current = document.getElementById(COUNTER_ID).innerText;
-      App.counter.render(increase + parseInt(current));
+      this.render(increase + parseInt(current));
     },
-    render: (count) => {
+    render: function(count)  {
       let counter = document.getElementById(COUNTER_ID);
       counter.innerText = count;
     }
