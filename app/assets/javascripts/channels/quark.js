@@ -6,6 +6,11 @@
       console.log('App.quarkChannel.received', data);
       if (data.status === 'ok') {
         App.counter.add(data.quark.count);
+      } else {
+        let errors = data.messages || ['Unknown error occurred'];
+        errors.forEach((message) => {
+          App.toast.render({ message: message });
+        });
       }
     },
     connected: function() {
