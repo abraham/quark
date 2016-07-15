@@ -12,26 +12,24 @@
     },
     render: function(userStats) {
       $('#active-users').text(this.activeUsersText(userStats.total_online));
-      $('#active-users-list').text(this.activeUsersNamesText(userStats.users));
+      $('#active-users-list').text(this.activeUsersNamesText(userStats.users, userStats.anonymous_online));
     },
     activeUsersText: function(total) {
       if (total === 1) {
-        return '1 user counting Quarks';
+        return '1 user clicking Quarks';
       } else {
-        return total + ' users counting Quarks'
+        return total + ' users clicking Quarks'
       }
     },
-    activeUsersNamesText: function(users) {
-      if (users.length === 0) {
+    activeUsersNamesText: function(users, anonymous_online) {
+      if (users.length === 0 && anonymous_online === 0) {
         return '';
-      } else if (users.length === 1) {
-        return 'Including ' + App.appearanceChannel.capitalise(users[0].name);
       } else {
         var names = users.map(function(user) {
           return App.appearanceChannel.capitalise(user.name);
         });
-        names[names.length - 1] = 'and ' + names[names.length - 1];
-        return 'Including ' + names.join(', ');
+        var namesText = names.length ? names.join(', ') + ' and ' : '';
+        return `Including ${namesText}${anonymous_online} anonymous people`;
       }
 
     },
