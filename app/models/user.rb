@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :quarks
   validates :name, presence: true
 
   def appear
