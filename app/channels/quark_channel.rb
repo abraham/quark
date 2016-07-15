@@ -1,6 +1,6 @@
 class QuarkChannel < ApplicationCable::Channel
   def subscribed
-    stream_from 'quark:quark'
+    stream_from 'quark:global'
     stream_from "quark:#{self}"
   end
 
@@ -9,7 +9,7 @@ class QuarkChannel < ApplicationCable::Channel
 
     quark = Quark.new(count: data['count'], user: current_user)
     if quark.save
-      QuarkChannel.broadcast_to(:quark, quark: quark, action: :created, status: :ok)
+      QuarkChannel.broadcast_to(:global, quark: quark, action: :created, status: :ok)
     else
       QuarkChannel.broadcast_to(self, action: :created, status: :error, messages: quark.errors.full_messages)
     end
