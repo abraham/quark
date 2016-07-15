@@ -25,7 +25,7 @@
       if (users.length === 0) {
         return '';
       } else if (users.length === 1) {
-        return 'Including ' + this.capitalise(names[0]);
+        return 'Including ' + this.capitalise(users[0].name);
       } else {
         let names = users.map((user) => {
           return this.capitalise(user.name);
