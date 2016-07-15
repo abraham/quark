@@ -9,6 +9,6 @@ class Quark < ApplicationRecord
   private
 
   def not_excessive_counting
-    errors.add(:quark, 'added too frequently') if user.quarks.since(5.seconds.ago).count > 5
+    errors.add(:quark, 'added too frequently') if user.quarks.since(1.minutes.ago).count > 60
   end
 end
