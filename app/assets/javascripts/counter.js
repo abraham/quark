@@ -7,6 +7,7 @@
 
   App.counter = {
     onSubmit: function(event)  {
+      App.counter.disable();
       App.quarkChannel.count(1);
       return false;
     },
@@ -20,6 +21,13 @@
     render: function(count)  {
       var counter = document.getElementById(COUNTER_ID);
       counter.innerText = count;
+    },
+    disable: function() {
+      $('form.counter button')[0].setAttribute('disabled', 'disabled');
+      setTimeout(App.counter.enable, 50);
+    },
+    enable: function() {
+      $('form.counter button')[0].removeAttribute('disabled');
     }
   }
 }).call(this);
