@@ -27,7 +27,7 @@
       } else if (users.length === 1) {
         return 'Including ' + this.capitalise(users[0].name);
       } else {
-        let names = users.map((user) => {
+        var names = users.map((user) => {
           return this.capitalise(user.name);
         });
         names[names.length - 1] = 'and ' + names[names.length - 1];

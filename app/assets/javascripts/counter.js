@@ -14,11 +14,11 @@
       $('form.counter').on('submit', this.onSubmit);
     },
     add: function(increase) {
-      let current = document.getElementById(COUNTER_ID).innerText;
+      var current = document.getElementById(COUNTER_ID).innerText;
       this.render(increase + parseInt(current));
     },
     render: function(count)  {
-      let counter = document.getElementById(COUNTER_ID);
+      var counter = document.getElementById(COUNTER_ID);
       counter.innerText = count;
     }
   }
