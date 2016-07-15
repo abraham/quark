@@ -8,7 +8,7 @@
         App.counter.add(data.quark.count);
       } else {
         var errors = data.messages || ['Unknown error occurred'];
-        errors.forEach((message) => {
+        errors.forEach(function(message) {
           App.toast.render({ message: message });
         });
       }

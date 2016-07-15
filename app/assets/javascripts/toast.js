@@ -4,22 +4,22 @@
   App.toast = {
     _upgraded: false,
     _pending: [],
-    queue: (toast) => {
+    queue: function(toast) {
       if (App.toast._upgraded) {
         App.toast.render(toast);
       } else {
         App.toast._pending.push(toast);
       }
     },
-    element: () => {
+    element: function() {
       return document.querySelector('#snackbar');
     },
-    render: (toast) => {
+    render: function(toast) {
       App.toast.element().MaterialSnackbar.showSnackbar(toast);
     },
-    ready: () => {
+    ready: function() {
       App.toast._upgraded = true;
-      App.toast._pending.forEach(toast => App.toast.render(toast));
+      App.toast._pending.forEach(function(toast) { App.toast.render(toast) });
     }
   }
 

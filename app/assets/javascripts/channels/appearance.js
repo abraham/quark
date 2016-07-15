@@ -25,10 +25,10 @@
       if (users.length === 0) {
         return '';
       } else if (users.length === 1) {
-        return 'Including ' + this.capitalise(users[0].name);
+        return 'Including ' + App.appearanceChannel.capitalise(users[0].name);
       } else {
-        var names = users.map((user) => {
-          return this.capitalise(user.name);
+        var names = users.map(function(user) {
+          return App.appearanceChannel.capitalise(user.name);
         });
         names[names.length - 1] = 'and ' + names[names.length - 1];
         return 'Including ' + names.join(', ');

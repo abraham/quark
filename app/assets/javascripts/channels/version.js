@@ -15,7 +15,7 @@
         App.toast.render({
           message: 'There is a new app version available',
           timeout: 60 * 1000,
-          actionHandler: () => location.reload(),
+          actionHandler: function() { location.reload() },
           actionText: 'Update'
         });
       }
