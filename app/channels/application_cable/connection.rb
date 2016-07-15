@@ -9,7 +9,7 @@ module ApplicationCable
     protected
 
     def find_verified_user
-      User.find_by(id: cookies.signed[:ws_user_id]) || 'anon'
+      User.find_by(id: cookies.signed[:ws_user_id])
     end
   end
 end

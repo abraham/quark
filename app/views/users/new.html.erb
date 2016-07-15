@@ -1,22 +1,24 @@
-<div class="mdl-layout-spacer"></div>
+<div class="mdl-grid">
+  <div class="mdl-layout-spacer"></div>
 
-<div class="card-wide mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title mdl-card--border">
-    <h2 class="mdl-card__title-text">What name would you like to be known by?</h2>
-  </div>
+  <div class="card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--border">
+      <h2 class="mdl-card__title-text">What name would you like to be known by?</h2>
+    </div>
 
-  <div class="mdl-card__supporting-text mdl-card--border">
-    <%= form_for @user, url: { action: :create } do |f| %>
-      <div class="mdl-textfield mdl-js-textfield">
-        <%= f.label :name, class: 'mdl-textfield__label' %>
-        <%= f.text_field :name, class: 'mdl-textfield__input', autofocus: :autofocus %>
-      </div>
+    <div class="mdl-card__supporting-text mdl-card--border">
+      <%= form_for @user, url: { action: :create } do |f| %>
+        <div class="mdl-textfield mdl-js-textfield">
+          <%= f.label :name, class: 'mdl-textfield__label' %>
+          <%= f.text_field :name, class: 'mdl-textfield__input', autofocus: :autofocus %>
+        </div>
 
-      <%= button_tag type: 'submit', class: 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent' do %>
-        Set name
+        <%= button_tag type: 'submit', class: 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent' do %>
+          Set name
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
 
-<div class="mdl-layout-spacer"></div>
+  <div class="mdl-layout-spacer"></div>
+</div>
