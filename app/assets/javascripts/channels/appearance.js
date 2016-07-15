@@ -29,7 +29,7 @@
           return App.appearanceChannel.capitalise(user.name);
         });
         var namesText = names.length ? names.join(', ') + ' and ' : '';
-        return `Including ${namesText}${anonymous_online} anonymous people`;
+        return 'Including ' + namesText + anonymous_online + ' anonymous people';
       }
 
     },
