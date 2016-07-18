@@ -3,11 +3,11 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   def appear
-    Redis.current.sadd(:online_users, id)
+    Redis.current.sadd(:users_online, id)
   end
 
   def disappear
-    Redis.current.srem(:online_users, id)
+    Redis.current.srem(:users_online, id)
   end
 
   def self.appear
