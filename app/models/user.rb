@@ -9,4 +9,12 @@ class User < ApplicationRecord
   def disappear
     Redis.current.srem(:online_users, id)
   end
+
+  def self.appear
+    Redis.current.incr(:anonymous_online)
+  end
+
+  def self.disappear
+    Redis.current.decr(:anonymous_online)
+  end
 end
