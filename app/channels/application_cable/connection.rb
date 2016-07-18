@@ -6,19 +6,13 @@ module ApplicationCable
 
     def connect
       self.current_user = find_verified_user
-      if current_user
-        current_user.appear
-      else
-        User.appear
-      end
+      context = current_user || User
+      context.appear
     end
 
     def disconnect
-      if current_user
-        current_user.disappear
-      else
-        User.disappear
-      end
+      context = current_user || User
+      context.disappear
     end
 
     protected
