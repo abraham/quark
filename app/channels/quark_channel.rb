@@ -16,6 +16,6 @@ class QuarkChannel < ApplicationCable::Channel
   end
 
   def total_count
-    QuarkChannel.broadcast_to(self, action: :get, status: :ok, count: Quark.total_count)
+    QuarkChannel.broadcast_to(self, action: :total_count, status: :ok, count: Quark.total_count)
   end
 end
