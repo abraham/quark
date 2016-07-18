@@ -16,7 +16,7 @@ class QuarkChannel < ApplicationCable::Channel
   end
 
   def total_count
-    success :total_count, total_count: Quark.total_count
+    success self, :total_count, total_count: Quark.total_count
   end
 
   private
