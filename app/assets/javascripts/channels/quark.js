@@ -6,10 +6,10 @@
     received: function(data) {
       console.log('App.quarkChannel.received', data);
       if (data.status === 'ok') {
-        if (data.action === 'created') {
+        if (data.total_count) {
+          App.counter.render(data.total_count);
+        } else  if (data.quark) {
           App.counter.add(data.quark.count);
-        } else if (data.action === 'total_count') {
-          App.counter.render(data.count);
         }
         App.quarkChannel.updatedAt = new Date();
       } else {
