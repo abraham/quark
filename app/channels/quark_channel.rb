@@ -11,7 +11,7 @@ class QuarkChannel < ApplicationCable::Channel
     if quark.save
       success :global, :created, quark: quark, total_count: Quark.total_count
     else
-      error self, :created, messages: quark.errors.full_messages
+      error self, :created, quark.errors.full_messages
     end
   end
 
