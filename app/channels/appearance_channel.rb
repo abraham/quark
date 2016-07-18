@@ -3,6 +3,7 @@ class AppearanceChannel < ApplicationCable::Channel
 
   def subscribed
     stream_for :appearance
+    stream_for 'appearance:appearance'
     send_user_stats
   end
 
