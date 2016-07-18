@@ -33,8 +33,10 @@ body {
 
 .card-wide > .mdl-card__title {
   margin: auto;
+  justify-content: center;
 }
 
 .card-wide > .mdl-card__supporting-text {
   margin: auto;
+  justify-content: center;
 }
