@@ -1,9 +1,12 @@
 class QuarkChannel < ApplicationCable::Channel
   def subscribed
+    # Subscribe to all Quarks created
     stream_from 'quark:global'
+    # Subscribe to specific API request responses
     stream_from "quark:#{self}"
   end
 
+  # Allow the creation of Quarks via ActionCable
   def create(data)
     return unless current_user
 
@@ -15,6 +18,7 @@ class QuarkChannel < ApplicationCable::Channel
     end
   end
 
+  # Send the current Quark#total_count stats the client when requested
   def total_count
     success self, :total_count, total_count: Quark.total_count
   end

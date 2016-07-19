@@ -1,3 +1,4 @@
+# Count Quarks as being clicked
 class CounterController < ApplicationController
   helper CounterHelper
 
@@ -35,6 +36,7 @@ class CounterController < ApplicationController
     params.require(:quark).permit(:count)
   end
 
+  # Update the Quark count for faster retrevial by other clients
   def update_count_cache(count)
     current_count = Rails.cache.fetch(:quark_count) { Quark.sum(:count) }
     Rails.cache.write(:quark_count, current_count + count)

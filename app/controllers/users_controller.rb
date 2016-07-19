@@ -20,8 +20,14 @@ class UsersController < ApplicationController
 
   private
 
+  # Randomize the login greating for fun
   def greeting(name)
-    ["Get counting #{name}!", "Hello #{name}!", "Hi #{name}!", "Welcome #{name}!"].sample
+    [
+      "Get counting #{name}!",
+      "Hello #{name}!",
+      "Hi #{name}!",
+      "Welcome #{name}!"
+    ].sample
   end
 
   def user_params

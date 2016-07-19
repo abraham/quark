@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   end
 
   def sign_in(user)
+    # Create a cookie for WebSocket connections to authenticate users with.
+    # Make sure it's signed with the app secret so it can't be forged.
     session[:user_id] = user.id
     cookies.signed[:ws_user_id] = user.id
   end
