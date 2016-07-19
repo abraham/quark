@@ -18,12 +18,16 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+main {
+  padding: 12px;
+}
+
 .mdl-layout__header-row {
   padding: 0 40px 0 40px;
 }
 
 .mdl-card {
-  margin: 24px 24px 0 24px;
+  margin: 12px;
 }
 
 .card-wide.mdl-card {
