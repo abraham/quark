@@ -1,4 +1,4 @@
-<%= form_for :quark, url: {action: :create}, html: {class: :counter} do |f| %>
+<%= form_for Quark.new do |f| %>
   <%= f.hidden_field :count, value: 1 %>
   <%= button_tag(type: 'submit', class: 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent') do %>
     <%= ['+1 Quark', 'Add Quark', 'Count Quark', 'I found one!', 'Catch a Quark'].sample %>

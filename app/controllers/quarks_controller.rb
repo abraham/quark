@@ -1,7 +1,5 @@
 # Count Quarks as being clicked
-class CounterController < ApplicationController
-  helper CounterHelper
-
+class QuarksController < ApplicationController
   before_action :require_login, only: [:create]
 
   def index
