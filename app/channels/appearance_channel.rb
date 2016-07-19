@@ -12,7 +12,7 @@ class AppearanceChannel < ApplicationCable::Channel
   end
 
   # Available for clients to specifically ask for current users online
-  def list
+  def online
     send_user_stats
   end
 

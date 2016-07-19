@@ -4,11 +4,13 @@
   App.appearanceChannel = App.cable.subscriptions.create({ channel: 'AppearanceChannel' }, {
     received: function(data) {
       console.log('App.appearanceChannel.received', data);
-      this.render(data);
+      if (data.status === 'ok') {
+        this.render(data);
+      }
     },
     connected: function() {
       console.log('App.appearanceChannel.connected');
-      this.perform('list');
+      this.perform('online');
     },
     render: function(userStats) {
       $('#active-users').text(this.activeUsersText(userStats.total_online));
