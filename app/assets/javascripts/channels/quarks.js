@@ -7,9 +7,9 @@
       console.log('App.quarksChannel.received', data);
       if (data.status === 'ok') {
         if (data.total_count) {
-          App.counter.render(data.total_count);
+          App.quarks.renderTotal(data.total_count);
         } else  if (data.quark) {
-          App.counter.add(data.quark.count);
+          App.quarks.add(data.quark.count);
         }
         App.quarksChannel.updatedAt = new Date();
       } else {
@@ -21,7 +21,7 @@
     },
     connected: function() {
       console.log('App.quarksChannel.connected');
-      App.counter.ready();
+      App.quarks.ready();
     },
     count: function(count) {
       this.perform('create', { count: count });

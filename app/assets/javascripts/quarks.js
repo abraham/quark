@@ -3,14 +3,15 @@
 
 (function() {
   this.App || (this.App = {});
+
   const COUNTER_ID = '#counter';
   const INPUT_ID = '#quark_count';
   const FORM_ID = '#new_quark'
 
-  App.counter = {
+  App.quarks = {
     onSubmit: function(event)  {
       var value = $(this).find(INPUT_ID).val();
-      App.counter.disable();
+      App.quarks.disableSubmit();
       App.quarksChannel.count(1);
       return false;
     },
@@ -19,17 +20,17 @@
     },
     add: function(increase) {
       var current = $(COUNTER_ID)[0].innerText;
-      this.render(increase + parseInt(current));
+      this.renderTotal(increase + parseInt(current));
     },
-    render: function(count)  {
+    renderTotal: function(count)  {
       var counter = $(COUNTER_ID)[0];
       counter.innerText = count;
     },
-    disable: function() {
+    disableSubmit: function() {
       $(FORM_ID).find('button')[0].setAttribute('disabled', 'disabled');
-      setTimeout(App.counter.enable, 50);
+      setTimeout(App.quarks.enableSubmit, 50);
     },
-    enable: function() {
+    enableSubmit: function() {
       $(FORM_ID).find('button')[0].removeAttribute('disabled');
     }
   }
