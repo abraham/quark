@@ -1,9 +1,9 @@
-class QuarkChannel < ApplicationCable::Channel
+class QuarksChannel < ApplicationCable::Channel
   def subscribed
     # Subscribe to all Quarks created
-    stream_from 'quark:global'
+    stream_from 'quarks:global'
     # Subscribe to specific API request responses
-    stream_from "quark:#{self}"
+    stream_from "quarks:#{self}"
   end
 
   # Allow the creation of Quarks via ActionCable
@@ -26,10 +26,10 @@ class QuarkChannel < ApplicationCable::Channel
   private
 
   def success(channel, action, values)
-    QuarkChannel.broadcast_to(channel, values.merge(action: action, status: :ok))
+    QuarksChannel.broadcast_to(channel, values.merge(action: action, status: :ok))
   end
 
   def error(channel, action, messages)
-    QuarkChannel.broadcast_to(channel, action: action, status: :error, messages: messages)
+    QuarksChannel.broadcast_to(channel, action: action, status: :error, messages: messages)
   end
 end

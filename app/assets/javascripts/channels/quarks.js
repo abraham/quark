@@ -1,17 +1,17 @@
 (function() {
   this.App || (this.App = {});
 
-  App.quarkChannel = App.cable.subscriptions.create({ channel: "QuarkChannel" }, {
+  App.quarksChannel = App.cable.subscriptions.create({ channel: "QuarksChannel" }, {
     updatedAt: new Date(),
     received: function(data) {
-      console.log('App.quarkChannel.received', data);
+      console.log('App.quarksChannel.received', data);
       if (data.status === 'ok') {
         if (data.total_count) {
           App.counter.render(data.total_count);
         } else  if (data.quark) {
           App.counter.add(data.quark.count);
         }
-        App.quarkChannel.updatedAt = new Date();
+        App.quarksChannel.updatedAt = new Date();
       } else {
         var errors = data.messages || ['Unknown error occurred'];
         errors.forEach(function(message) {
@@ -20,7 +20,7 @@
       }
     },
     connected: function() {
-      console.log('App.quarkChannel.connected');
+      console.log('App.quarksChannel.connected');
       App.counter.ready();
     },
     count: function(count) {
@@ -28,12 +28,12 @@
     },
     onVisibilityChange: function() {
       var fiveMinutesAgo = (new Date()) - 5 * 60 * 1000;
-      if (App.quarkChannel.updatedAt.getTime() < fiveMinutesAgo) {
-        App.quarkChannel.perform('total_count');
-        App.quarkChannel.updatedAt = new Date();
+      if (App.quarksChannel.updatedAt.getTime() < fiveMinutesAgo) {
+        App.quarksChannel.perform('total_count');
+        App.quarksChannel.updatedAt = new Date();
       }
     }
   });
 
-  document.addEventListener("visibilitychange", App.quarkChannel.onVisibilityChange);
+  document.addEventListener("visibilitychange", App.quarksChannel.onVisibilityChange);
 }).call(this);

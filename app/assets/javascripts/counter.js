@@ -8,7 +8,7 @@
   App.counter = {
     onSubmit: function(event)  {
       App.counter.disable();
-      App.quarkChannel.count(1);
+      App.quarksChannel.count(1);
       return false;
     },
     ready: function() {
