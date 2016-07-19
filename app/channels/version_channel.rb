@@ -7,6 +7,6 @@ class VersionChannel < ApplicationCable::Channel
 
   # We only want to send the app version to the channel that requested it
   def get
-    VersionChannel.broadcast_to(self, version: current_app_version)
+    success self, :get, version: current_app_version
   end
 end

@@ -22,14 +22,4 @@ class QuarksChannel < ApplicationCable::Channel
   def total_count
     success self, :total_count, total_count: Quark.total_count
   end
-
-  private
-
-  def success(channel, action, values)
-    QuarksChannel.broadcast_to(channel, values.merge(action: action, status: :ok))
-  end
-
-  def error(channel, action, messages)
-    QuarksChannel.broadcast_to(channel, action: action, status: :error, messages: messages)
-  end
 end

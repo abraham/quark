@@ -19,7 +19,7 @@ class AppearanceChannel < ApplicationCable::Channel
   private
 
   def send_user_stats
-    AppearanceChannel.broadcast_to(:appearance, current_users_online)
+    success :appearance, :online, current_users_online
   end
 
   def user_names(user_ids)
