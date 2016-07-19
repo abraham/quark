@@ -5,6 +5,7 @@
     _upgraded: false,
     _pending: [],
     queue: function(toast) {
+      // Wait until MDL has upgraded the dom and make the Snackbar API available.
       if (App.toast._upgraded) {
         App.toast.render(toast);
       } else {
@@ -19,9 +20,10 @@
     },
     ready: function() {
       App.toast._upgraded = true;
-      App.toast._pending.forEach(function(toast) { App.toast.render(toast) });
+      App.toast._pending.forEach(App.toast.render);
     }
   }
 
+  // Once MDL has upgraded the dom, process queued toasts.
   $(document).on('mdl-componentupgraded', '#snackbar', App.toast.ready);
 }).call(this);

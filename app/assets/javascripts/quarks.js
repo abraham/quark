@@ -27,6 +27,7 @@
       counter.innerText = count;
     },
     disableSubmit: function() {
+      // This is just to prevent scripts from submitting every millisecond
       $(FORM_ID).find('button')[0].setAttribute('disabled', 'disabled');
       setTimeout(App.quarks.enableSubmit, 50);
     },

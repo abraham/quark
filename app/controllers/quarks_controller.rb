@@ -3,7 +3,6 @@ class QuarksController < ApplicationController
   before_action :require_login, only: [:create]
 
   def index
-    @current_user = current_user
   end
 
   def create

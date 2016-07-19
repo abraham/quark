@@ -7,7 +7,7 @@
     </div>
 
     <div class="mdl-card__actions mdl-card--border">
-      <% if @current_user %>
+      <% if current_user %>
         <%= render 'form' %>
       <% else %>
         <%= link_to('Start clicking', users_new_url, class: 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent') %>
