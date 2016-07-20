@@ -1,25 +1,26 @@
 # Notify clients when users go online/offline and how many of them are named
 class AppearanceChannel < ApplicationCable::Channel
   def subscribed
-    # Notify clients who are not the current one that someone has come online
-    # Current stats need to be sent to client before `stream_for` to avoid an error
-    send_user_stats
     stream_for :global
+    stream_from "appearance:#{self}"
+
+    # Notify clients who are not the current one that someone has come online
+    send_user_stats :global
   end
 
   def unsubscribed
-    send_user_stats
+    send_user_stats :global
   end
 
   # Available for clients to specifically ask for current users online
   def online
-    send_user_stats
+    send_user_stats self
   end
 
   private
 
-  def send_user_stats
-    success :global, :online, current_users_online
+  def send_user_stats(channel)
+    success channel, :online, current_users_online
   end
 
   def user_names(user_ids)
