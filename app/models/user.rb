@@ -10,11 +10,11 @@ class User < ApplicationRecord
     Redis.current.srem(:users_online, id)
   end
 
-  def self.appear
-    Redis.current.incr(:anonymous_online)
+  def self.appear(uuid)
+    Redis.current.sadd(:anonymous_online, uuid)
   end
 
-  def self.disappear
-    Redis.current.decr(:anonymous_online)
+  def self.disappear(uuid)
+    Redis.current.srem(:anonymous_online, uuid)
   end
 end

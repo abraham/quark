@@ -1,11 +1,12 @@
 # Notify clients when users go online/offline and how many of them are named
 class AppearanceChannel < ApplicationCable::Channel
   def subscribed
+    # Notify clients who are not the current one that someone has come online
+    # Current stats need to be sent to client before `stream_for` to avoid an error
+    send_user_stats :global
+
     stream_for :global
     stream_from "appearance:#{self}"
-
-    # Notify clients who are not the current one that someone has come online
-    send_user_stats :global
   end
 
   def unsubscribed
@@ -32,11 +33,11 @@ class AppearanceChannel < ApplicationCable::Channel
   def current_users_online
     total_count = ActionCable.server.connections.count
     users_count = Redis.current.scard(:users_online)
-    anonymous_count = Redis.current.get(:anonymous_online).to_i
+    anonymous_count = Redis.current.scard(:anonymous_online)
     user_ids = Redis.current.srandmember(:users_online, 5)
     {
       total_online: total_count,
-      anonymous_online: [0, anonymous_count].max, # anonymous_count can sometimes mess up and go negative
+      anonymous_online: anonymous_count,
       users_online: users_count,
       users: user_names(user_ids)
     }

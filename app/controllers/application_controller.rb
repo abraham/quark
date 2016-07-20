@@ -3,10 +3,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  before_action :assign_client_id
   before_action :validate_session
 
   def current_user
-    @_current_user ||= session[:user_id] && User.find_by(id: session[:user_id])
+    @current_user ||= session[:user_id] && User.find_by(id: session[:user_id])
   end
 
   def sign_in(user)
@@ -26,5 +27,11 @@ class ApplicationController < ActionController::Base
   # We want to prevent odd things happening if a users session doesn't match their WebSocket cookie
   def validate_session
     sign_out unless session[:user_id] == cookies.signed[:ws_user_id]
+  end
+
+  def assign_client_id
+    unless cookies.signed[:client_id]
+      cookies.signed[:client_id] = SecureRandom.uuid
+    end
   end
 end
