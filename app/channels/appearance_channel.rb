@@ -31,10 +31,12 @@ class AppearanceChannel < ApplicationCable::Channel
   # Get various stats about the number of users online.
   # This gets called a lot so use Redis cached data.
   def current_users_online
+    anonymous_online = Redis.current.scard(:anonymous_online)
+    users_online = Redis.current.scard(:users_online)
     {
-      total_online: ActionCable.server.connections.count,
-      anonymous_online: Redis.current.scard(:anonymous_online),
-      users_online: Redis.current.scard(:users_online),
+      total_online: anonymous_online + users_online,
+      anonymous_online: anonymous_online,
+      users_online: users_online,
       users: user_names(Redis.current.srandmember(:users_online, 5))
     }
   end
