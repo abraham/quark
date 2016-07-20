@@ -32,10 +32,11 @@ class AppearanceChannel < ApplicationCable::Channel
   def current_users_online
     total_count = ActionCable.server.connections.count
     users_count = Redis.current.scard(:users_online)
+    anonymous_count = Redis.current.get(:anonymous_online).to_i
     user_ids = Redis.current.srandmember(:users_online, 5)
     {
       total_online: total_count,
-      anonymous_online: Redis.current.get(:anonymous_online),
+      anonymous_online: [0, anonymous_count].max, # anonymous_count can sometimes mess up and go negative
       users_online: users_count,
       users: user_names(user_ids)
     }
