@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_many :quarks
+
   validates :name, presence: true
+
+  scope :lower_name, -> (name) { where('lower(name) = ?', name.downcase) }
 
   def appear
     Redis.current.sadd(:users_online, id)

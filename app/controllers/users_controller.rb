@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    # We don't really care about security here, just that actions have a name to display
+    @user = find_user(params['user']['name']) || User.new(user_params)
 
     if @user.save
       sign_in @user
@@ -19,6 +20,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def find_user(name)
+    User.lower_name(name).first
+  end
 
   # Randomize the login greating for fun
   def greeting(name)
