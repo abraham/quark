@@ -26,9 +26,10 @@ Run Redis server.
 $ redis-server
 ```
 
-Setup the database.
+Create and setup the database.
 
 ```
+$ rails db:create
 $ rails db:migrate
 ```
 
