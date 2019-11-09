@@ -35,6 +35,9 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <meta name='version' content='<%= current_app_version %>'>
+
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -78,9 +81,6 @@
         </div>
       </main>
     </div>
-
-    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <%= render 'shared/flash' %>
   </body>
