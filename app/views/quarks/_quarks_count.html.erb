@@ -10,7 +10,7 @@
       <% if current_user %>
         <%= render 'form' %>
       <% else %>
-        <%= link_to('Start clicking', users_new_url, class: 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent') %>
+        <%= link_to('Start clicking', new_users_url, class: 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent') %>
       <% end %>
     </div>
   </div>

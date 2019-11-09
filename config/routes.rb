@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  post 'users/create'
-
-  get 'quarks/index'
-  post 'quarks' => 'quarks#create'
+  resource :users
+  resource :quarks
 
   root 'quarks#index'
 
