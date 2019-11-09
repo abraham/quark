@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       @user.errors.full_messages.each do |message|
         flash[:error] = message
       end
-      redirect_to users_new_url
+      redirect_to new_users_url
     end
   end
 
