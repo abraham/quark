@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '~> 2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.2.1.1'
+gem 'rails'
 # Use Puma as the app server
 gem 'puma'
 # Use SCSS for stylesheets
@@ -29,6 +29,15 @@ gem 'redis'
 
 gem 'pg'
 
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'nokogiri'
+
+gem 'activestorage'
+
+gem 'webpacker'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -43,7 +52,3 @@ group :development do
   gem 'spring-watcher-listen'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'nokogiri'
-gem 'activestorage', '>= 5.2.1.1'
