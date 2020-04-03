@@ -1,6 +1,6 @@
 # Quark Clicker
 
-Sample Rails 5 ActionCable application.
+Sample Rails ActionCable application.
 
 # Install
 
